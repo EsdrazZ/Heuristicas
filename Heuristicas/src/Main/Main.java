@@ -1,12 +1,17 @@
 package Main;
 
+import javax.swing.SwingUtilities;
 import View.*;
+import Controller.Controlador;
+import Model.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		PanelOpciones panelOpciones = new PanelOpciones();
-		Ventana ventana = new Ventana(panelOpciones);
+		Grafo grafo = new Grafo();
+		Controlador controlador = new Controlador(grafo);
+		
+		controlador.inciar();
 	}
 }
