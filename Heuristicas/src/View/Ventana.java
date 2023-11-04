@@ -17,7 +17,8 @@ public class Ventana extends JFrame{
 		
 		setTitle("Heuristicos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(1500, 800);
+		setLocationRelativeTo(null);
 		
 		panelOpciones.setBackground(Color.CYAN);
 		panelOpciones.setPreferredSize(new Dimension(200,0));

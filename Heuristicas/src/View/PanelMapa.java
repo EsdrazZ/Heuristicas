@@ -32,6 +32,9 @@ public class PanelMapa extends JPanel{
 
 			g.setColor(Color.RED);
 			g.fillOval(x, y, 10, 10);
+			
+			g.setColor(Color.RED);
+			g.drawString(nodo.getNombre(), x + 12, y);
 		}
 	}
 	
