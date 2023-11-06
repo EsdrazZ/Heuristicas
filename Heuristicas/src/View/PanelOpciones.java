@@ -73,24 +73,35 @@ public class PanelOpciones extends JPanel{
 		gbc.insets = new Insets(0, 0, 5, 0);
 		this.add(listaPaisesDestino, gbc);
 		
-		//Configuraciones para la etiqueta "Cantidad"
-		distancia.setOpaque(true);
-		distancia.setBackground(Color.WHITE);
-		distancia.setHorizontalAlignment(SwingConstants.CENTER);
+		//Configuraciones para el boton de Calcular
+		calcCamino.setHorizontalAlignment(SwingConstants.CENTER);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
 		gbc.gridy = 4; 
 		gbc.weightx = 1.0;
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.ipady = 20;
-		gbc.insets = new Insets(15, 0, 5, 0);
+		gbc.insets = new Insets(10, 0, 5, 0);
+		this.add(calcCamino, gbc);
+		
+		//Configuraciones para la etiqueta "Cantidad"
+		distancia.setOpaque(true);
+		distancia.setBackground(Color.WHITE);
+		distancia.setHorizontalAlignment(SwingConstants.CENTER);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridx = 0;
+		gbc.gridy = 5; 
+		gbc.weightx = 1.0;
+		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.ipady = 20;
+		gbc.insets = new Insets(10, 0, 5, 0);
 		this.add(distancia, gbc);
 		
 		//Configuraciones para el area de texto "Mostrar Cantidad"
 		mostrarDistancia.setBackground(Color.WHITE);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
-		gbc.gridy = 5; 
+		gbc.gridy = 6; 
 		gbc.weightx = 1.0;
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.ipady = 40;

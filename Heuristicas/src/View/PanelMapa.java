@@ -36,6 +36,23 @@ public class PanelMapa extends JPanel{
 			g.setColor(Color.RED);
 			g.drawString(nodo.getNombre(), x + 12, y);
 		}
+		
+		//Prueba de pintar aristas
+		for (Nodo nodo1 : nodos) {
+			for(Nodo nodo2 : nodos) {
+				if(nodo1 != nodo2) {
+					int x1 = nodo1.getX();
+					int y1 = nodo1.getY();
+					int x2 = nodo2.getX();
+					int y2 = nodo2.getY();
+					
+					g.setColor(Color.BLUE);
+					g.drawLine(x1, y1, x2, y2);
+					
+				}
+			}
+		}
+		
 	}
 	
 }

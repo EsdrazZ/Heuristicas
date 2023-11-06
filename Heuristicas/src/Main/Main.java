@@ -10,7 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Grafo grafo = new Grafo();
-		Controlador controlador = new Controlador(grafo);
+		Dijkstra dijkstra = new Dijkstra();
+		Controlador controlador = new Controlador(grafo, dijkstra);
 		
 		controlador.inciar();
 	}

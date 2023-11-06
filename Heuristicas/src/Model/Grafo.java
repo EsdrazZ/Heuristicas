@@ -6,7 +6,7 @@ import java.util.List;
 public class Grafo {
 
 	private List<Nodo> nodos;
-	private int[][] distancias;
+	private int[][] costo;
 	
 	public Grafo() {
 		nodos = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Grafo {
 		nodos.add(new Nodo(434, 384, "Culiacán"));
 		nodos.add(new Nodo(700, 600, "Acapulco de Juárez"));
 		
-		distancias = new int[][] {
+		costo = new int[][] {
 			    {0, 531, 1790, 2743, 540, 898, 1429, 1306, 402, 484, 1884, 834, 2576, 1216},
 			    {532, 0, 1526, 2215, 10, 787, 1165, 1840, 328, 220, 1356, 698, 2047, 687, 859},
 			    {1806, 1535, 0, 1164, 1543, 1349, 355, 3100, 1384, 1312, 847, 1092, 1007, 1088, 2181},
@@ -51,7 +51,7 @@ public class Grafo {
 		return nodos;
 	}
 	
-	public int[][] getDistancias() { 
-		return distancias;
+	public int[][] getCostos() { 
+		return costo;
 	}
 }
