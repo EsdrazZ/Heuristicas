@@ -36,7 +36,7 @@ public class PanelMapa extends JPanel{
 			g.setColor(Color.RED);
 			g.drawString(nodo.getNombre(), x + 12, y);
 		}
-		
+		/*
 		//Prueba de pintar aristas
 		for (Nodo nodo1 : nodos) {
 			for(Nodo nodo2 : nodos) {
@@ -52,6 +52,7 @@ public class PanelMapa extends JPanel{
 				}
 			}
 		}
+		*/
 		
 	}
 	
