@@ -10,8 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Grafo grafo = new Grafo();
-		Dijkstra dijkstra = new Dijkstra();
-		Controlador controlador = new Controlador(grafo, dijkstra);
+		AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico();
+		Controlador controlador = new Controlador(grafo, algoritmoGenetico);
 		
 		controlador.inciar();
 	}

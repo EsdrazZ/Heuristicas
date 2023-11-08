@@ -5,9 +5,7 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
-import Model.Dijkstra;
-import Model.Grafo;
-import Model.Nodo;
+import Model.*;
 import View.PanelMapa;
 import View.PanelOpciones;
 import View.Ventana;
@@ -15,11 +13,11 @@ import View.Ventana;
 public class Controlador {
 
 	private Grafo grafo;
-	private Dijkstra dijsktra;
+	private AlgoritmoGenetico algoritmoGenetico;
 	
-	public Controlador(Grafo grafo, Dijkstra dijkstra) {
+	public Controlador(Grafo grafo, AlgoritmoGenetico algoritmoGenetico) {
 		this.grafo = grafo;
-		this.dijsktra = dijkstra;
+		this.algoritmoGenetico = algoritmoGenetico;
 	}
 	
 	public void inciar() {
