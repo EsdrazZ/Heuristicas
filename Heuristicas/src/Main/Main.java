@@ -10,9 +10,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Grafo grafo = new Grafo();
-		AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico();
-		Controlador controlador = new Controlador(grafo, algoritmoGenetico);
+		algoritmoRutas algoritmoRutas = new algoritmoRutas();
+		PanelOpciones panelOpciones = new PanelOpciones();
+		PanelMapa panelMapa = new PanelMapa();
+		Controlador controlador = new Controlador(grafo, algoritmoRutas, panelOpciones, panelMapa);
+		controlador.iniciar();
 		
-		controlador.inciar();
+		//Crea la ventana
+		SwingUtilities.invokeLater(() -> {
+			Ventana ventana = new Ventana(panelOpciones, panelMapa);
+			ventana.setVisible(true);
+		});
+		
 	}
 }

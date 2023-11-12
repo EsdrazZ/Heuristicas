@@ -2,22 +2,24 @@ package View;
 
 import javax.swing.*;
 
+import Controller.Controlador;
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 public class PanelOpciones extends JPanel{
 	
 	String [] listaDeElementos = {"Ciudad de México", "Guadalajara", "Ciudad Juárez", "Tijuana", "Zapopan", "Monterrey",
 			"Chihuahua", "Mérida", "San Luis Potosí", "Aguascalientes", "Hermosillo", "Saltillo", "Mexicali", "Culiacán", 
 			"Acapulco de Juárez"};
-	private JButton calcCamino = new JButton("Calcular el Camino");
-	private JComboBox listaPaisesOrigen = new JComboBox(listaDeElementos);
-	private JComboBox listaPaisesDestino = new JComboBox(listaDeElementos);
+	private JButton caminoCorto = new JButton("Calcular el camino mas corto");
+	private JButton caminoLargo = new JButton("Calcular el camino mas largo");
+	private JButton limpiar = new JButton("Limpiar");
+	private JComboBox<String> listaPaises = new JComboBox<>(listaDeElementos);
 	private JLabel origen = new JLabel("Seleccione el Origen: ");
-	private JLabel destino = new JLabel("Seleccione el Destino: ");
 	private JLabel distancia = new JLabel("Cantidad de Km. recorridos");
 	private JTextArea mostrarDistancia = new JTextArea();
 	
@@ -48,33 +50,11 @@ public class PanelOpciones extends JPanel{
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.ipady = 30;
 		gbc.insets = new Insets(0, 0, 10, 0);
-		this.add(listaPaisesOrigen, gbc);
-		
-		//Configuraciones para la etiqueta "Destino"
-		destino.setOpaque(true);
-		destino.setBackground(Color.WHITE);
-		destino.setHorizontalAlignment(SwingConstants.CENTER);
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 2; 
-		gbc.weightx = 1.0;
-		gbc.anchor = GridBagConstraints.CENTER;
-		gbc.ipady = 20;
-		gbc.insets = new Insets(15, 0, 5, 0);
-		this.add(destino, gbc);
-		
-		//Configuraciones para el ComboBox de Paises de Destino
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		gbc.weightx = 1.0;
-		gbc.anchor = GridBagConstraints.CENTER;
-		gbc.ipady = 30;
-		gbc.insets = new Insets(0, 0, 5, 0);
-		this.add(listaPaisesDestino, gbc);
+		this.add(listaPaises, gbc);
 		
 		//Configuraciones para el boton de Calcular
-		calcCamino.setHorizontalAlignment(SwingConstants.CENTER);
+		caminoCorto.setActionCommand("RutaCorta");
+		caminoCorto.setHorizontalAlignment(SwingConstants.CENTER);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
 		gbc.gridy = 4; 
@@ -82,7 +62,19 @@ public class PanelOpciones extends JPanel{
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.ipady = 20;
 		gbc.insets = new Insets(10, 0, 5, 0);
-		this.add(calcCamino, gbc);
+		this.add(caminoCorto, gbc);
+		
+		//Configuraciones para el boton de Calcular
+		caminoLargo.setActionCommand("RutaLarga");
+		caminoLargo.setHorizontalAlignment(SwingConstants.CENTER);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridx = 0;
+		gbc.gridy = 5;
+		gbc.weightx = 1.0;
+		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.ipady = 20;
+		gbc.insets = new Insets(10, 0, 5, 0);
+		this.add(caminoLargo, gbc);
 		
 		//Configuraciones para la etiqueta "Cantidad"
 		distancia.setOpaque(true);
@@ -90,7 +82,7 @@ public class PanelOpciones extends JPanel{
 		distancia.setHorizontalAlignment(SwingConstants.CENTER);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
-		gbc.gridy = 5; 
+		gbc.gridy = 6; 
 		gbc.weightx = 1.0;
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.ipady = 20;
@@ -99,22 +91,51 @@ public class PanelOpciones extends JPanel{
 		
 		//Configuraciones para el area de texto "Mostrar Cantidad"
 		mostrarDistancia.setBackground(Color.WHITE);
+		mostrarDistancia.setEditable(false);
+		mostrarDistancia.setAlignmentY(SwingConstants.CENTER);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
-		gbc.gridy = 6; 
+		gbc.gridy = 7; 
 		gbc.weightx = 1.0;
 		gbc.anchor = GridBagConstraints.CENTER;
 		gbc.ipady = 40;
 		gbc.insets = new Insets(0, 0, 0, 0);
 		this.add(mostrarDistancia, gbc);
 		
+		//Configuraciones para el boton de Limpiar
+		limpiar.setActionCommand("Limpiar");
+		limpiar.setHorizontalAlignment(SwingConstants.CENTER);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridx = 0;
+		gbc.gridy = 8;
+		gbc.weightx = 1.0;
+		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.ipady = 20;
+		gbc.insets = new Insets(10, 0, 5, 0);
+		this.add(limpiar, gbc);
+		
 	}
 	
-	public String getListaOrigen() {
-		return listaPaisesOrigen.getActionCommand();
+	public int getNodoInicio() {
+		return listaPaises.getSelectedIndex();
 	}
 	
-	public String getListaDestino() {
-		return listaPaisesDestino.getActionCommand();
+	public String getNombreNodo(int pos) {
+		return (String)listaPaises.getSelectedItem();
 	}
+	
+	public void setListener (ActionListener listener) {
+		caminoCorto.addActionListener(listener);
+		caminoLargo.addActionListener(listener);
+		limpiar.addActionListener(listener);
+	}
+	
+	public void setTexto(String resultado) {
+		mostrarDistancia.setText(resultado);
+	}
+	
+	public void limpiarTexto() {
+		mostrarDistancia.setText("");
+	}
+	
 }

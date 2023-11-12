@@ -53,4 +53,5 @@ public class Grafo {
 	public int[][] getCostos() { 
 		return costo;
 	}
+	
 }
